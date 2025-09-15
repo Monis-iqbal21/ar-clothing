@@ -20,7 +20,7 @@ export function GridTileImage({
   return (
     <div
       className={clsx(
-        "group flex h-full w-full items-center justify-center overflow-hidden border bg-[rgb(235,235,235)] hover:border-blue-600}",
+        "group flex flex-col h-full min-h-[400px] w-full overflow-hidden rounded-xl border bg-white shadow-md hover:shadow-lg transition",
         {
           relative: label,
           "border-2 border-blue-600": active,
@@ -28,15 +28,30 @@ export function GridTileImage({
         }
       )}
     >
-        {props.src? (
-            <Image className={clsx("relative h-full w-full object-contain", {
-            "transition duration-300 ease-in-out group-hover:scale-105":
-              isInteractive,
-          })} {...props}/>
-        ): null}
-        {label?(
-            <Label title={label.title} amount={label.amount} currencyCode={label.currencyCode} position={label.position}/>
-        ): null}
+      {/* Image Section */}
+      {props.src ? (
+        <div className="relative h-[70vh] w-full bg-gray-100 flex items-center justify-center overflow-hidden">
+          <Image
+            className={clsx("h-full w-full object-cover object-[75%_25%]", {
+              "transition duration-300 ease-in-out group-hover:scale-105":
+                isInteractive,
+            })}
+            {...props}
+          />
+        </div>
+      ) : null}
+
+      {/* Label Section (Title + Price) */}
+      {label ? (
+        <div className="p-4 bg-white dark:bg-neutral-900 border-t border-neutral-200 dark:border-neutral-700">
+          <Label
+            title={label.title}
+            amount={label.amount}
+            currencyCode={label.currencyCode}
+            position={label.position}
+          />
+        </div>
+      ) : null}
     </div>
   );
 }

@@ -36,10 +36,10 @@ export default function FilterItemDropDown({ list }: { list: ListItem[] }) {
     });
   }, [pathname, searchParams, list]);
   return (
-    <div ref={ref}>
+    <div ref={ref} className="">
       <div
         onClick={() => setOpenSelect(!openSelect)}
-        className="flex w-full items-center justify-between rounded border border-black/30 px-4 py-2 text-sm"
+        className="flex w-full items-center  justify-between rounded border border-black/30 px-4 py-2 text-sm"
       >
         {active}
         <ChevronDownIcon />

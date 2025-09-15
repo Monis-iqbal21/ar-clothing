@@ -49,14 +49,14 @@ export default function CartModal() {
   return (
     <>
       {/* Open button */}
-      <button aria-label="Open cart" onClick={openCart}>
-        <OpenCart quantity={cart?.totalQuantity} />
+      <button aria-label="Open cart" onClick={openCart} className=" m-0">
+        <OpenCart quantity={cart?.totalQuantity} className="text-white "/>
       </button>
 
       {/* Overlay */}
       {isOpen && (
         <div
-          className="fixed inset-0 z-40 bg-black/30 backdrop-blur-sm transition-opacity"
+          className="fixed  z-40 bg-black/30 backdrop-blur-sm transition-opacity"
           onClick={closeCart}
         />
       )}

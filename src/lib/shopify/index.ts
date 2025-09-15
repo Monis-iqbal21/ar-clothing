@@ -123,6 +123,7 @@ export async function getMenu(handle: string): Promise<Menu[]> {
     tags: [TAGS.collections],
     variables: { handle },
     cache: "no-store",
+    
   });
 
   return (

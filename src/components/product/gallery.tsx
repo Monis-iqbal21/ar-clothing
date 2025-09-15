@@ -22,20 +22,20 @@ export default function Gallery({
     "h-full px-6 transition-all ease-in-out hover:scale-110 hover:text-black flex items-center justify-center";
 
   return (
-    <form>
-      <div  className="relative aspect-square h-full max-h-[550px] w-full overflow-hidden">
+    <form className="m-0 p-0 inline">
+      <div  className="relative aspect-square  h-full max-h-[550px] w-full overflow-hidden flex items-center justify-center">
         {images[imageIndex] && (
           <Image
             className="h-full w-full object-contain"
             fill
-            sizes="(min-widht:1024px) 66vw, 100vw"
+            sizes="(min-width:1024px) 66vw, 100vw"
             src={images[imageIndex]?.src as string}
             alt={images[imageIndex]?.altText as string}
             priority={true}
           />
         )}
         {images.length > 1 ? (
-          <div className="absolute bottom-[15%] flex w-full justify-center">
+          <div className="absolute bottom-[15%] flex w-full justify-center ">
             <div className="mx-auto flex h-11 items-center rounded-full border border-white bg-neutral-50/80 text-neutral-500 backdrop-blur">
               <button
                 formAction={() => {
@@ -47,7 +47,7 @@ export default function Gallery({
               >
                 <ArrowLeftIcon className="h-5" />
               </button>
-              <div className="mx-1 h-6 w-px bg-neutral-500"></div>
+              <div className="bg-red-200 mx-1 h-6 w-px bg-neutral-500"></div>
               <button
                 formAction={() => {
                   const newState = updateImage(nextImageIndex.toString());

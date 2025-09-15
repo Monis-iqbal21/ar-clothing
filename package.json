@@ -17,6 +17,10 @@
     "@headlessui/react": "^2.2.7",
     "@heroicons/react": "^2.2.0",
     "clsx": "^2.1.1",
+    "embla-carousel-react": "^8.6.0",
+    "framer-motion": "^12.23.12",
+    "heroicon": "^0.0.2",
+    "lucide-react": "^0.542.0",
     "next": "15.2.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
@@ -24,13 +28,27 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
-    "@tailwindcss/postcss": "^4",
+    "@tailwindcss/postcss": "^4.1.12",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "autoprefixer": "^10.4.21",
     "eslint": "^9",
     "eslint-config-next": "15.2.3",
-    "tailwindcss": "^4",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.12",
     "typescript": "^5"
-  }
+  },
+  "description": "This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Monis-iqbal21/ar-clothing.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Monis-iqbal21/ar-clothing/issues"
+  },
+  "homepage": "https://github.com/Monis-iqbal21/ar-clothing#readme"
 }

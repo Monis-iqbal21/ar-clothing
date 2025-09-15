@@ -123,11 +123,11 @@ export default function MobileMenu({ menu }: { menu: Menu[] }) {
     <>
       {/* Hamburger Button */}
       <button
-        className="flex h-11 w-11 items-center justify-center rounded-md border border-neutral-200 text-black transition-colors md:hidden"
+        className="flex h-11 w-12 items-center justify-center rounded-md  transition-colors md:hidden"
         onClick={openMobileMenu}
         aria-label="Open Mobile Menu"
       >
-        <Bars3Icon className="h-5 w-2" />
+        <Bars3Icon className="h-auto w-6 text-white" />
       </button>
 
       {/* Backdrop */}

@@ -28,7 +28,7 @@ export default async function CategoryPage({
       {products.length === 0 ? (
         <p>No product found in this collection</p>
       ) : (
-        <Grid className="grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+        <Grid className="grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
           <ProductItemsGrid products={products} />
         </Grid>
       )}

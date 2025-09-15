@@ -24,14 +24,19 @@ export default function FilterList({
 }) {
   return (
     <>
-      <nav>
+      <nav className="">
         {title ? (
-          <h3 className="hidden text-xs text-neutral-500 md:block ">{title}</h3>
+          <div>
+            <h3 className="hidden w-full text-md md:text-lg lg:text-lg text-neutral-500 font-bold md:block ">
+              {title}
+              <hr className="h-0.5 bg-gray-300 border-0 rounded"/>
+            </h3>
+          </div>
         ) : null}
-        <ul className="hidden md:block">
+        <ul className="hidden md:block ">
           <FilterItemList list={list} />
         </ul>
-        <ul className="md:hidden">
+        <ul className="md:hidden ">
           <FilterItemDropDown list={list} />
         </ul>
       </nav>

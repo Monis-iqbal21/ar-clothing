@@ -17,12 +17,12 @@ function SubmitButton({
   selectedVariantId: string | undefined;
 }) {
   const buttonClasses =
-    "relative flex w-full items-center justify-center rounded-full bg-blue-600 p-4 tracking-wide text-white";
+    "relative flex w-full md:w-[60%] lg:w-[70%] items-center justify-center bg-[var(--primarycolor)] rounded-full  p-4 tracking-wide text-white m-[15_auto_auto_auto]  ";
   const disabledClasses = "cursor-not-allowed opacity-60 hover:opacity-60";
 
   if (!availableForSale) {
     return (
-      <button disabled className={clsx(buttonClasses, disabledClasses)}>
+      <button disabled className={clsx(buttonClasses, disabledClasses)} >
         Out of Stock
       </button>
     );

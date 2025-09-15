@@ -2,13 +2,13 @@
 
 
 :root {
-  --primary-color: #16423C;
-  --seconday-color: #6A9C89;
-  --background-color: #C4DAD2;
-  --hovering-effect: #E9EFEC;
-  --primary-text: #303030;
-  --secondary-text: #949494;
- }
+  --primarycolor: rgb(22, 66, 60);
+  --secondarycolor: rgb(106, 156, 137);
+  --backgroundcolor: rgb(196, 218, 210);
+  --hoveringeffect: rgb(233, 239, 236);
+  --primarytext: rgb(48, 48, 48);
+  --secondarytext: rgb(148, 148, 148);
+}
 
 /* @theme inline {
   --color-background: var(--background);
