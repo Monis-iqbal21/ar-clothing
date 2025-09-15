@@ -2,10 +2,11 @@ import Prose from "@/src/components/prose";
 import { getPage } from "@/src/lib/shopify";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-// Define PageProps locally if not available from a module
-type PageProps = {
-  params: { page: string };
-};
+
+// REMOVED: The manual type definition for PageProps.
+// type PageProps = {
+//   params: { page: string };
+// };
 
 export async function generateMetadata({
   params,
@@ -27,7 +28,12 @@ export async function generateMetadata({
   };
 }
 
-export default async function Page({ params }: PageProps) {
+export default async function Page({
+  params,
+}: {
+  // FIX: Type the props inline to match Next.js's expectations.
+  params: { page: string };
+}) {
   const page = await getPage(params.page);
 
   if (!page) return notFound();
