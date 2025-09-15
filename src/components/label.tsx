@@ -1,11 +1,10 @@
-import clsx from "clsx";
 import Price from "./price";
 
 export default function Label({
   title,
   amount,
   currencyCode,
-  position = "bottom",
+  // position = "bottom",
 }: {
   title: string;
   amount: string;

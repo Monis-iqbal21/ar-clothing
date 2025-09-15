@@ -3,7 +3,6 @@ import "./styles/home.css";
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect, useCallback } from "react";
-import styles from "./styles/carousel.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faMinus,
@@ -12,22 +11,14 @@ import {
   faPhone,
   faWallet,
 } from "@fortawesome/free-solid-svg-icons";
-// import CategoryProduct from "../components/categoryProduct/CategoryProduct";
-import trend1 from "../assets/images/multi1.jpg";
-import trend2 from "../assets/images/trend1.png";
-import trend3 from "../assets/images/trend2.png";
-// import arr1 from "../assets/images/arrival1.jpg";
-// import arr2 from "../assets/images/arrivals2.jpg";
-// import arr3 from "../assets/images/arrivals3.jpg";
-// import arr4 from "../assets/images/multi1.jpg";
 
-// import ArrivalProduct from "../components/arrivalProduct/ArrivalProduct";
+
+
 import Review from "../components/review/Review";
 import Carousel from "../components/carousel/Carousel";
-import img1 from "../../public/assets/carousel1.jpg";
-import { Fullscreen } from "lucide-react";
-import { getProducts } from "../lib/shopify/index";
-import { ur } from "zod/v4/locales";
+// import { Fullscreen } from "lucide-react";
+// import { getProducts } from "../lib/shopify/index";
+// import { ur } from "zod/v4/locales";
 
 export default function Home() {
   const initialImages = [
@@ -38,11 +29,11 @@ export default function Home() {
 
   const [currentIndex, setCurrentIndex] = useState<number>(0);
 
-  const goToPrevious = (): void => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? initialImages.length - 1 : prevIndex - 1
-    );
-  };
+  // const goToPrevious = (): void => {
+  //   setCurrentIndex((prevIndex) =>
+  //     prevIndex === 0 ? initialImages.length - 1 : prevIndex - 1
+  //   );
+  // };
 
   const goToNext = useCallback((): void => {
     setCurrentIndex((prevIndex) =>
@@ -67,19 +58,8 @@ export default function Home() {
     "/assets/carousel7.jpg",
   ];
 
-  // const [products, setProducts] = useState<any[]>([]);
-
-  // useEffect(() => {
-  //   async function fetchProducts() {
-  //     const data = await getProducts({
-  //       sortKey: "CREATED_AT",
-  //       reverse: true,
-  //     });
-  //     setProducts(data);
-  //   }
-  //   fetchProducts();
-  // }, []);
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+ 
+  // const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
     <div>
@@ -451,16 +431,7 @@ export default function Home() {
 
       {/* card 1  END  */}
 
-      {/* display: flex
-;
-    flex-wrap: wrap;
-    padding: 20px 0;
-    margin: 0 auto; 
-    width: 100%;
-    justify-content: space-evenly;
-    flex-direction: row;
-    gap: 20px;
-    align-items: center; */}
+
 
       {/* Services */}
       <div className="w-full h-auto my-20">
