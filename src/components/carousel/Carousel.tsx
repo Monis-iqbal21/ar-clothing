@@ -1,6 +1,6 @@
 // components/SimpleCarousel.tsx
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -9,24 +9,23 @@ interface SimpleCarouselProps {
   interval?: number; // optional auto-slide interval in ms
 }
 
-const Carousel: React.FC<SimpleCarouselProps> = ({
-  images,
-  interval = 5000,
-}) => {
+const Carousel: React.FC<SimpleCarouselProps> = ({ images, interval = 5000 }) => {
   const [current, setCurrent] = useState(0);
   const length = images.length;
 
   const prevSlide = () =>
     setCurrent((prev) => (prev === 0 ? length - 1 : prev - 1));
 
-  const nextSlide = () =>
+  // Wrap nextSlide in useCallback
+  const nextSlide = useCallback(() => {
     setCurrent((prev) => (prev === length - 1 ? 0 : prev + 1));
+  }, [length]); // The dependency is 'length' because the function relies on it.
 
-  // Auto-slide effect
+  // The useEffect hook now depends on the memoized nextSlide
   useEffect(() => {
     const slider = setInterval(nextSlide, interval);
     return () => clearInterval(slider);
-  }, [nextSlide, interval]);
+  }, [nextSlide, interval]); 
 
   return (
     <div className="relative w-full h-screen overflow-hidden bg-black">

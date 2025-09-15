@@ -12,13 +12,12 @@ import { revalidateTag } from "next/cache";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
-// Corrected `any` type to unknown as it's a better practice
 export async function addItem(
   prevState: unknown,
   selectedVariantId: string | undefined
 ) {
   const cookieStore = await cookies();
-  const cartId = cookieStore.get("cartId")?.value; // Changed let to const
+  const cartId = cookieStore.get("cartId")?.value;
 
   if (!cartId || !selectedVariantId) {
     return "Error adding item to cart";
@@ -29,20 +28,20 @@ export async function addItem(
       { merchandiseId: selectedVariantId, quantity: 1 },
     ]);
     revalidateTag(TAGS.cart);
-  } catch (_error) { // Used _error to indicate an unused variable
+  } catch { // FIX: Removed the unused 'error' variable from the catch block
     return "Error adding item to cart";
   }
 }
 
 export async function updateItemQuantity(
-  prevState: unknown, // Corrected `any` type to unknown
+  prevState: unknown,
   payload: {
     merchandiseId: string;
     quantity: number;
   }
 ) {
   const cookieStore = await cookies();
-  const cartId = cookieStore.get("cartId")?.value; // Changed let to const
+  const cartId = cookieStore.get("cartId")?.value;
   if (!cartId) {
     return "Missing cart ID";
   }
@@ -76,7 +75,7 @@ export async function updateItemQuantity(
     }
 
     revalidateTag(TAGS.cart);
-  } catch (error) { // The console.error(error) means this variable is used, so no change needed
+  } catch (error) { // The 'error' variable is used here by console.error(), so no change is needed
     console.error(error);
     return "Error updating item quantity";
   }
@@ -84,7 +83,7 @@ export async function updateItemQuantity(
 
 export async function removeItem(prevState: unknown, merchandiseId: string) {
   const cookieStore = await cookies();
-  const cartId = cookieStore.get("cartId")?.value; // Changed let to const
+  const cartId = cookieStore.get("cartId")?.value;
 
   if (!cartId) {
     return "Missing cart ID";
@@ -106,21 +105,21 @@ export async function removeItem(prevState: unknown, merchandiseId: string) {
     } else {
       return "Item not found in cart";
     }
-  } catch (_error) { // Used _error to indicate an unused variable
+  } catch { // FIX: Removed the unused 'error' variable from the catch block
     return "Error removing item from cart";
   }
 }
 
 export async function redirectToCheckout() {
   const cookieStore = await cookies();
-  const cartId = cookieStore.get("cartId")?.value; // Changed let to const
+  const cartId = cookieStore.get("cartId")?.value;
 
   if (!cartId) {
-      console.error("Missing cart ID");
+    console.error("Missing cart ID");
     return;
   }
 
-  const cart = await getCart(cartId); // Changed let to const
+  const cart = await getCart(cartId);
 
   if (!cart) {
     console.error("Error fetching cart");
@@ -131,11 +130,10 @@ export async function redirectToCheckout() {
 }
 
 export async function createCartAndSetCookie() {
-  const cart = await createCart(); // Changed let to const
+  const cart = await createCart();
   const cookieStore = await cookies();
   cookieStore.set("cartId", cart.id!);
 }
-
 // old code below
 
 
