@@ -9,7 +9,10 @@ interface SimpleCarouselProps {
   interval?: number; // optional auto-slide interval in ms
 }
 
-const Carousel: React.FC<SimpleCarouselProps> = ({ images, interval = 5000 }) => {
+const Carousel: React.FC<SimpleCarouselProps> = ({
+  images,
+  interval = 5000,
+}) => {
   const [current, setCurrent] = useState(0);
   const length = images.length;
 
@@ -23,7 +26,7 @@ const Carousel: React.FC<SimpleCarouselProps> = ({ images, interval = 5000 }) =>
   useEffect(() => {
     const slider = setInterval(nextSlide, interval);
     return () => clearInterval(slider);
-  }, [current, interval]);
+  }, [nextSlide, interval]);
 
   return (
     <div className="relative w-full h-screen overflow-hidden bg-black">
@@ -34,8 +37,8 @@ const Carousel: React.FC<SimpleCarouselProps> = ({ images, interval = 5000 }) =>
           alt={`Slide ${current + 1}`}
           className="absolute w-full h-full object-cover"
           initial={{ opacity: 0, x: 200, scale: 1.05 }} // comes from right
-          animate={{ opacity: 1, x: 0, scale: 1 }}       // settles in center
-          exit={{ opacity: 0, x: -200, scale: 0.95 }}    // fades & slides left
+          animate={{ opacity: 1, x: 0, scale: 1 }} // settles in center
+          exit={{ opacity: 0, x: -200, scale: 0.95 }} // fades & slides left
           transition={{ duration: 0.5, ease: "easeInOut" }}
         />
       </AnimatePresence>
