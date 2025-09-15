@@ -1,5 +1,4 @@
 "use server";
-"use server";
 
 import { TAGS } from "@/src/lib/constants";
 import {
@@ -13,12 +12,13 @@ import { revalidateTag } from "next/cache";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
+// Corrected `any` type to unknown as it's a better practice
 export async function addItem(
-  prevState: any, // Error: Unexpected any. Specify a different type. (@typescript-eslint/no-explicit-any)
+  prevState: unknown,
   selectedVariantId: string | undefined
 ) {
   const cookieStore = await cookies();
-  let cartId = cookieStore.get("cartId")?.value; // Error: 'cartId' is never reassigned. Use 'const' instead. (prefer-const)
+  const cartId = cookieStore.get("cartId")?.value; // Changed let to const
 
   if (!cartId || !selectedVariantId) {
     return "Error adding item to cart";
@@ -29,20 +29,20 @@ export async function addItem(
       { merchandiseId: selectedVariantId, quantity: 1 },
     ]);
     revalidateTag(TAGS.cart);
-  } catch (error) { // Error: 'error' is defined but never used. (@typescript-eslint/no-unused-vars)
+  } catch (_error) { // Used _error to indicate an unused variable
     return "Error adding item to cart";
   }
 }
 
 export async function updateItemQuantity(
-  prevState: any, // Error: Unexpected any. Specify a different type. (@typescript-eslint/no-explicit-any)
+  prevState: unknown, // Corrected `any` type to unknown
   payload: {
     merchandiseId: string;
     quantity: number;
   }
 ) {
   const cookieStore = await cookies();
-  let cartId = cookieStore.get("cartId")?.value; // Error: 'cartId' is never reassigned. Use 'const' instead. (prefer-const)
+  const cartId = cookieStore.get("cartId")?.value; // Changed let to const
   if (!cartId) {
     return "Missing cart ID";
   }
@@ -72,20 +72,19 @@ export async function updateItemQuantity(
         ]);
       }
     } else if (quantity > 0) {
-      // If the item doesn't exist in the cart and quantity > 0, add it
       await addToCart(cartId, [{ merchandiseId, quantity }]);
     }
 
     revalidateTag(TAGS.cart);
-  } catch (error) {
-    console.error(error); // This line uses the 'error' variable, so it should not be an unused-vars error based on the log. However, the log snippet provided still flags it. This suggests a potential issue in the log or a conditional path where it remains unused.
+  } catch (error) { // The console.error(error) means this variable is used, so no change needed
+    console.error(error);
     return "Error updating item quantity";
   }
 }
 
-export async function removeItem(prevState: any, merchandiseId: string) {
+export async function removeItem(prevState: unknown, merchandiseId: string) {
   const cookieStore = await cookies();
-  let cartId = cookieStore.get("cartId")?.value; // Error: 'cartId' is never reassigned. Use 'const' instead. (prefer-const)
+  const cartId = cookieStore.get("cartId")?.value; // Changed let to const
 
   if (!cartId) {
     return "Missing cart ID";
@@ -107,21 +106,21 @@ export async function removeItem(prevState: any, merchandiseId: string) {
     } else {
       return "Item not found in cart";
     }
-  } catch (error) { // Error: 'error' is defined but never used. (@typescript-eslint/no-unused-vars)
+  } catch (_error) { // Used _error to indicate an unused variable
     return "Error removing item from cart";
   }
 }
 
 export async function redirectToCheckout() {
   const cookieStore = await cookies();
-  let cartId = cookieStore.get("cartId")?.value; // Error: 'cartId' is never reassigned. Use 'const' instead. (prefer-const)
+  const cartId = cookieStore.get("cartId")?.value; // Changed let to const
 
   if (!cartId) {
       console.error("Missing cart ID");
     return;
   }
 
-  let cart = await getCart(cartId); // Error: 'cart' is never reassigned. Use 'const' instead. (prefer-const)
+  const cart = await getCart(cartId); // Changed let to const
 
   if (!cart) {
     console.error("Error fetching cart");
@@ -132,7 +131,7 @@ export async function redirectToCheckout() {
 }
 
 export async function createCartAndSetCookie() {
-  let cart = await createCart(); // Error: 'cart' is never reassigned. Use 'const' instead. (prefer-const)
+  const cart = await createCart(); // Changed let to const
   const cookieStore = await cookies();
   cookieStore.set("cartId", cart.id!);
 }
