@@ -2,6 +2,10 @@ import Prose from "@/src/components/prose";
 import { getPage } from "@/src/lib/shopify";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
+// Define PageProps locally if not available from a module
+type PageProps = {
+  params: { page: string };
+};
 
 export async function generateMetadata({
   params,
@@ -23,12 +27,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function Page({
-  params,
-}: {
-  // FIX: Added 'params: { page: string }' to the type definition.
-  params: { page: string };
-}) {
+export default async function Page({ params }: PageProps) {
   const page = await getPage(params.page);
 
   if (!page) return notFound();
