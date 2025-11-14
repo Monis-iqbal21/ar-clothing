@@ -12,8 +12,6 @@ import {
   faWallet,
 } from "@fortawesome/free-solid-svg-icons";
 
-
-
 import Review from "../components/review/Review";
 import Carousel from "../components/carousel/Carousel";
 // import { Fullscreen } from "lucide-react";
@@ -58,7 +56,6 @@ export default function Home() {
     "/assets/carousel7.jpg",
   ];
 
- 
   // const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
@@ -85,7 +82,6 @@ export default function Home() {
         </p>
       </div>
 
-
       <div className=" px-2 py-10 grid grid-row-2 md:grid-rows-1 md:grid-cols-2 gap-10 align-center md:px-15 lg:px-30 ">
         {/* 1st  */}
         <div className="bg-[#f3f3f3] h-[90vh] md:[80vh] w-full grid grid-cols-[60%_40%] rounded-2xl shadow-2xl">
@@ -100,30 +96,30 @@ export default function Home() {
           </div>
           <div className="grid grid-rows h-[80%] justify-evenly items-center px-2 py-5 md:px-7  md:py-10">
             {/* <div className="h-full flex flex-col justify-center items-center justify-evenly "> */}
-              <p
-                className="text-sm md:text-md md:font-bold rounded-2xl text-white px-3 py-1 text-center"
-                style={{ backgroundColor: "#2a9541ff" }}
-              >
-                traditional wear
-              </p>
-              <p className="text-lg font-bold text-black text-center">
-                Premium sherwani wear
-              </p>
-              <p
-                className="text-lg md:text-2xl font-black  text-center "
-                style={{ color: "var(--primarycolor)" }}
-              >
-                PKR 25,000{" "}<br />
-                <span className="line-through text-gray-400 text-sm md:text-lg ">
-                  PKR 26,000
-                </span>
-              </p>
+            <p
+              className="text-sm md:text-md md:font-bold rounded-2xl text-white px-3 py-1 text-center"
+              style={{ backgroundColor: "#2a9541ff" }}
+            >
+              traditional wear
+            </p>
+            <p className="text-lg font-bold text-black text-center">
+              Premium sherwani wear
+            </p>
+            <p
+              className="text-lg md:text-2xl font-black  text-center "
+              style={{ color: "var(--primarycolor)" }}
+            >
+              PKR 25,000 <br />
+              <span className="line-through text-gray-400 text-sm md:text-lg ">
+                PKR 26,000
+              </span>
+            </p>
             {/* </div> */}
 
             {/* <div className="h-auto flex  items-center "> */}
-              <button className="w-full h-10 mb-0 mr-0 block bg-green-500 text-white py-2 rounded">
-                Add to Cart
-              </button>
+            <button className="w-full h-10 mb-0 mr-0 block bg-green-500 text-white py-2 rounded">
+              Add to Cart
+            </button>
             {/* </div> */}
           </div>
         </div>
@@ -431,11 +427,50 @@ export default function Home() {
 
       {/* card 1  END  */}
 
+      {/* {card 2} */}
+      <div className="w-full h-300 grid grid-rows-3 grid-cols-1 md:h-[100vh]  md:grid-row-1 md:grid-cols-[20%_55%_20%] gap-5 pr-5 pl-5 my-20">
+        <div className="relative text-bottom-0 flex items-end justify-center md:h-[100vh]">
+          <Image
+            src={"/assets/brown-man.png"}
+            fill
+            alt="some man"
+            className="w-full object-cover object-top"
+          />
+          <p className="relative w-full text-center bg-[var(--hoveringeffect)] my-10 py-3 text-md text-black font-bold">
+            Premium Quality Selection
+          </p>
+        </div>
+        <div className="relative relative text-center flex items-end justify-center md:h-[100vh]">
+          <Image
+            src={"/assets/rawCloths.png"}
+            fill
+            alt="some man"
+            className="w-full object-cover object-top"
+          />
+          <p
+            className="relative w-150 mb-[5%] text-lg md:text-3xl font-bold text-white px-5 py-3 bg-white/20 backdrop-blur-xl md:rounded-xl  shadow-2xl"
+          >
+            Threads into the Finest Look
+          </p>
+        </div>
+        <div className="relative relative text-bottom-0 flex items-end justify-center md:h-[100vh]">
+          <Image
+            src={"/assets/form-img.png"}
+            fill
+            alt="some man"
+            className="w-full object-cover object-top"
+          />
+          <p className="relative w-full text-center bg-[var(--hoveringeffect)] my-10 py-3 text-md text-black font-bold ">
+            Premium Quality Selection
+          </p>
+        </div>
+      </div>
 
+      {/* {card 2 end} */}
 
       {/* Services */}
-      <div className="w-full h-auto my-20">
-        <div className="flex flex-wrap w-full items-center gap-10 justify-evenly py-20">
+      <div className="w-full h-auto my-10">
+        <div className="flex flex-wrap w-full items-center gap-y-10 justify-evenly px-30 py-20">
           {/* 1. Free Delivery */}
           <div className="fspw_div">
             <FontAwesomeIcon icon={faCar} className="fspw_icon_size" />
